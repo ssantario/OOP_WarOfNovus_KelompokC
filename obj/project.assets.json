@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Alysha\\.nuget\\packages\\": {}
+    "C:\\Users\\laura_2iobs64\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alysha\\OneDrive\\ドキュメント\\3rd\\OOP\\WarOfNovus\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+      "projectUniqueName": "C:\\Users\\laura_2iobs64\\OneDrive\\Documents\\UniAssignments\\Semester-3_(2024)\\OOP\\Perkuliahan\\OOP_WarOfNovus\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
       "projectName": "WarOfNovus",
-      "projectPath": "C:\\Users\\Alysha\\OneDrive\\ドキュメント\\3rd\\OOP\\WarOfNovus\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
-      "packagesPath": "C:\\Users\\Alysha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alysha\\OneDrive\\ドキュメント\\3rd\\OOP\\WarOfNovus\\OOP_WarOfNovus_KelompokC\\obj\\",
+      "projectPath": "C:\\Users\\laura_2iobs64\\OneDrive\\Documents\\UniAssignments\\Semester-3_(2024)\\OOP\\Perkuliahan\\OOP_WarOfNovus\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+      "packagesPath": "C:\\Users\\laura_2iobs64\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\laura_2iobs64\\OneDrive\\Documents\\UniAssignments\\Semester-3_(2024)\\OOP\\Perkuliahan\\OOP_WarOfNovus\\OOP_WarOfNovus_KelompokC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alysha\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\laura_2iobs64\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

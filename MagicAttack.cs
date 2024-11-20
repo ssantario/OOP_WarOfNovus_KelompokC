@@ -4,10 +4,18 @@ namespace WarOfNovus
 {
     public class MagicAttack : IAttackStrategy
     {
-        public void ExecuteAttack(Player player, Character enemy)
+        public void ExecuteAttack(Player attacker, Character target)
         {
-            Console.WriteLine($"{player.Name} melakukan serangan sihir pada {enemy.Name}!");
-            enemy.Health -= (player.AttackPower * 2 - enemy.Defense);
+            int damage = CalculateDamage(attacker, target, false); // Assume no critical hit here
+            target.Health -= damage;
+            Console.WriteLine($"{attacker.Name} menyerang {target.Name} dengan serangan sihir! Damage: {damage}");
+        }
+
+        public int CalculateDamage(Character attacker, Character target, bool isCritical)
+        {
+            int baseDamage = Math.Max(0, attacker.AttackPower - target.Defense);
+            return isCritical ? baseDamage * 2 : baseDamage; // Double damage for critical hit
         }
     }
+
 }

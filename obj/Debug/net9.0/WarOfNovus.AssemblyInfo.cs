@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WarOfNovus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+607f85b7730b94e1ee4ecfba44f20df53f53c393")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dd66361b06939164dfebcf7c591e5d1a382d7c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("WarOfNovus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WarOfNovus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
