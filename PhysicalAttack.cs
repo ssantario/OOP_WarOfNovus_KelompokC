@@ -7,7 +7,7 @@ namespace WarOfNovus
         public void ExecuteAttack(Player player, Character enemy)
         {
             Console.WriteLine($"{player.Name} melakukan serangan fisik pada {enemy.Name}!");
-            enemy.Health -= (player.Attack - enemy.Defense);
+            enemy.Health -= (player.AttackPower - enemy.Defense);
         }
     }
 }

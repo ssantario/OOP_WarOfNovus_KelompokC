@@ -6,8 +6,8 @@ namespace WarOfNovus
     {
         public string Element { get; private set; }
 
-        public Enemy(string name, int health, int attack, int defense, string element)
-            : base(name, health, attack, defense, 1)
+        public Enemy(string name, int health, int attackPower, int defense, string element)
+            : base(name, health, attackPower, defense, 1)
         {
             Element = element;
         }
@@ -15,7 +15,7 @@ namespace WarOfNovus
         public override void Attack(Character target)
         {
             Console.WriteLine($"{Name} menyerang {target.Name} dengan elemen {Element}!");
-            // Logika serangan musuh
+            target.Health -= (AttackPower - target.Defense);
         }
     }
 }

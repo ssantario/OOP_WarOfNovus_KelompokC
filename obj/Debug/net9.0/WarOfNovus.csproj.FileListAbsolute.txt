@@ -1,0 +1,15 @@
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.AssemblyInfoInputs.cache
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.AssemblyInfo.cs
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.csproj.CoreCompileInputs.cache
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.sourcelink.json
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\bin\Debug\net9.0\WarOfNovus.exe
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\bin\Debug\net9.0\WarOfNovus.deps.json
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\bin\Debug\net9.0\WarOfNovus.runtimeconfig.json
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\bin\Debug\net9.0\WarOfNovus.dll
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\bin\Debug\net9.0\WarOfNovus.pdb
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.dll
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\refint\WarOfNovus.dll
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.pdb
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\WarOfNovus.genruntimeconfig.cache
+C:\Users\Alysha\OneDrive\ドキュメント\3rd\OOP\WarOfNovus\OOP_WarOfNovus_KelompokC\obj\Debug\net9.0\ref\WarOfNovus.dll

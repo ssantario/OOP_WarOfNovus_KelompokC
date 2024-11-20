@@ -6,20 +6,20 @@ namespace WarOfNovus
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public int Attack { get; set; }
+        public int AttackPower { get; set; } // Ubah nama dari Attack
         public int Defense { get; set; }
         public int Level { get; set; }
 
-        public Character(string name, int health, int attack, int defense, int level)
+        public Character(string name, int health, int attackPower, int defense, int level)
         {
             Name = name;
             Health = health;
-            Attack = attack;
+            AttackPower = attackPower;
             Defense = defense;
             Level = level;
         }
 
-        public abstract void Attack(Character target);
+        public abstract void Attack(Character target); // Metode abstrak tetap digunakan untuk serangan
 
         public bool IsAlive() => Health > 0;
     }
