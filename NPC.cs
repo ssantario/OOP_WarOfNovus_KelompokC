@@ -27,6 +27,11 @@ namespace WarOfNovus
             }
         }
 
+        public bool IsTutorialCompleted()
+        {
+            return currentStep >= tutorialSteps.Length;
+        }
+
         public void ShowDeathMessage()
         {
             Console.WriteLine("Trainer: Your endeavor was valiant, but alas, you have fallen. Do not give up, for every defeat is a lesson. Rise again and continue your journey!");

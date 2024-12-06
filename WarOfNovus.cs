@@ -16,7 +16,7 @@ namespace WarOfNovus
                 Console.WriteLine("Press ENTER to continue...");
                 Console.ReadLine();
 
-                if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Enter)
+                if (tutorialNPC.IsTutorialCompleted())
                 {
                     tutorialCompleted = true;
                 }
