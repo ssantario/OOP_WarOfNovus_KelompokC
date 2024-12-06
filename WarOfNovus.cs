@@ -71,7 +71,7 @@ namespace WarOfNovus
             Console.WriteLine(@" | | /| / /__ _____  / __ \/ _/ / |/ /__ _  ____ _____ ");
             Console.WriteLine(@" | |/ |/ / _ `/ __/ / /_/ / _/ /    / _ \ |/ / // (_-< ");
             Console.WriteLine(@" |__/|__/\_,_/_/    \____/_/  /_/|_/\___/___/\_,_/___/ ");
-            
+
             // Border bottom
             Console.WriteLine("========================================================");
         }
@@ -150,6 +150,10 @@ namespace WarOfNovus
             Console.WriteLine($"Player dibuat: {player.Name}, Nation: {player.Nation}, Job: {player.Job}");
             Console.WriteLine($"Health: {player.Health}, Attack: {player.AttackPower}, Defense: {player.Defense}");
 
+            // Apply initial buffs or debuffs if any
+            player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
+            player.ApplyStatusEffect(new Debuff(2, 2, 0, 0)); // Example: Debuff for 2 turns
+
             TransitionToFightScene(player);
         }
 
@@ -197,9 +201,12 @@ namespace WarOfNovus
 
             // Tentukan jenis attack berdasarkan Job karakter
             IAttackStrategy strategy;
-            if (character is Player player && player.Job == Job.Spiritualist) // Job is now an enum
+            Player player = null;
+            if (character is Player p && p.Job == Job.Spiritualist) // Job is now an enum
             {
                 strategy = new MagicAttack(); // Spiritualist menggunakan serangan sihir
+                Console.WriteLine($"{p.Name} adalah seorang Spiritualist, menggunakan serangan sihir!");
+                player = p;
             }
             else
             {
@@ -209,12 +216,6 @@ namespace WarOfNovus
 
             strategy.ExecuteAttack((Player)character, enemy);
             Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
-
-            // Check if player is dead
-            if (character.Health <= 0)
-            {
-                npc.ShowDeathMessage();
-            }
         }
     }
 }

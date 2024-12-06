@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WarOfNovus
 {
@@ -20,6 +21,10 @@ namespace WarOfNovus
     {
         public Race Nation { get; private set; }
         public Job Job { get; private set; }
+        public List<Skill> Skills { get; private set; } = new List<Skill>();
+        public bool IsDefending { get; set; }
+        public int OriginalAttackPower { get; set; }
+        public int OriginalDefense { get; set; }
 
         public Player(string name, Race nation, Job job)
             : base(name, 100, 10, 5, 1)
@@ -27,6 +32,7 @@ namespace WarOfNovus
             Nation = nation;
             Job = job;
             SetupCharacter();
+            InitializeSkills();
         }
 
         private void SetupCharacter()
@@ -55,11 +61,23 @@ namespace WarOfNovus
             }
         }
 
+        private void InitializeSkills()
+        {
+            // Add some example skills
+            Skills.Add(new BuffSkill("Power Up", 3, new Buff(3, 5, 0)));
+            Skills.Add(new DebuffSkill("Weaken", 3, new Debuff(3, 5, 5, 5))); // Provide all required arguments
+        }
+
         public override void Attack(Character target)
         {
             Console.WriteLine($"{Name} menyerang {target.Name}!");
             // Simple damage calculation based on attack and defense
             int damage = Math.Max(0, AttackPower - target.Defense);
+            if (target is Player player && player.IsDefending)
+            {
+                damage /= 2; // Halve the damage if the target is defending
+                player.IsDefending = false; // Reset defending flag after attack
+            }
             target.Health -= damage;
             Console.WriteLine($"{target.Name} menerima {damage} damage.");
         }

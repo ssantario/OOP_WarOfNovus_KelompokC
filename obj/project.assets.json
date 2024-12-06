@@ -1,36 +1,36 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net8.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\laura_2iobs64\\.nuget\\packages\\": {}
+    "C:\\Users\\Rivi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\laura_2iobs64\\OneDrive\\Documents\\UniAssignments\\Semester-3_(2024)\\OOP\\Perkuliahan\\OOP_WarOfNovus\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+      "projectUniqueName": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
       "projectName": "WarOfNovus",
-      "projectPath": "C:\\Users\\laura_2iobs64\\OneDrive\\Documents\\UniAssignments\\Semester-3_(2024)\\OOP\\Perkuliahan\\OOP_WarOfNovus\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
-      "packagesPath": "C:\\Users\\laura_2iobs64\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\laura_2iobs64\\OneDrive\\Documents\\UniAssignments\\Semester-3_(2024)\\OOP\\Perkuliahan\\OOP_WarOfNovus\\OOP_WarOfNovus_KelompokC\\obj\\",
+      "projectPath": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+      "packagesPath": "C:\\Users\\Rivi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\laura_2iobs64\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Rivi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -42,13 +42,12 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
@@ -65,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
