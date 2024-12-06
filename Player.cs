@@ -25,6 +25,7 @@ namespace WarOfNovus
         public bool IsDefending { get; set; }
         public int OriginalAttackPower { get; set; }
         public int OriginalDefense { get; set; }
+        public Quest CurrentQuest { get; private set; }
 
         public Player(string name, Race nation, Job job)
             : base(name, 100, 10, 5, 1)
@@ -68,6 +69,39 @@ namespace WarOfNovus
             Skills.Add(new DebuffSkill("Weaken", 3, new Debuff(3, 5, 5, 5))); // Provide all required arguments
         }
 
+        public void AssignQuest(Quest quest)
+        {
+            CurrentQuest = quest;
+            Console.WriteLine($"Quest '{quest.Title}' assigned: {quest.Description}");
+        }
+
+        public void CompleteQuestObjective(string objective)
+        {
+            if (CurrentQuest != null)
+            {
+                CurrentQuest.CompleteObjective(objective);
+            }
+        }
+
+        public void DisplayCurrentQuest()
+        {
+            if (CurrentQuest != null)
+            {
+                Console.WriteLine($"Current Quest: {CurrentQuest.Title}");
+                Console.WriteLine($"Description: {CurrentQuest.Description}");
+                Console.WriteLine("Objectives:");
+                foreach (var objective in CurrentQuest.Objectives)
+                {
+                    Console.WriteLine($"- {objective}");
+                }
+                Console.WriteLine($"Reward: {CurrentQuest.Reward}");
+            }
+            else
+            {
+                Console.WriteLine("No current quest.");
+            }
+        }
+
         public override void Attack(Character target)
         {
             Console.WriteLine($"{Name} menyerang {target.Name}!");
@@ -80,6 +114,12 @@ namespace WarOfNovus
             }
             target.Health -= damage;
             Console.WriteLine($"{target.Name} menerima {damage} damage.");
+
+            // Track damage dealt for quest objectives
+            if (CurrentQuest != null)
+            {
+                CurrentQuest.TrackDamageDealt(damage);
+            }
         }
     }
 }

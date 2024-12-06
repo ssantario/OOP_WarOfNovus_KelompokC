@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WarOfNovus
 {
@@ -61,7 +62,6 @@ namespace WarOfNovus
             Console.ReadLine();
             Console.Clear();
         }
-
 
         static void TopTitle()
         {
@@ -150,9 +150,15 @@ namespace WarOfNovus
             Console.WriteLine($"Player dibuat: {player.Name}, Nation: {player.Nation}, Job: {player.Job}");
             Console.WriteLine($"Health: {player.Health}, Attack: {player.AttackPower}, Defense: {player.Defense}");
 
+            // Assign a quest to the player
+            var quest = new Quest("First Steps", "Complete the tutorial, defeat your first enemy, and deal 50 damage.", new List<string> { "Complete Tutorial", "Defeat First Enemy", "Deal 50 Damage" }, "100 Gold");
+            player.AssignQuest(quest);
+
+            // Display current quest
+            player.DisplayCurrentQuest();
+
             // Apply initial buffs or debuffs if any
             player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
-            player.ApplyStatusEffect(new Debuff(2, 2, 0, 0)); // Example: Debuff for 2 turns
 
             TransitionToFightScene(player);
         }
@@ -216,6 +222,15 @@ namespace WarOfNovus
 
             strategy.ExecuteAttack((Player)character, enemy);
             Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
+
+            // Display current quest during the fight scene
+            if (player != null)
+            {
+                player.DisplayCurrentQuest();
+                // Complete quest objectives
+                player.CompleteQuestObjective("Complete Tutorial");
+                player.CompleteQuestObjective("Defeat First Enemy");
+            }
         }
     }
 }
