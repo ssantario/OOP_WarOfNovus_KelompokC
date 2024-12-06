@@ -134,6 +134,10 @@ namespace WarOfNovus
             Console.WriteLine($"Player dibuat: {player.Name}, Nation: {player.Nation}, Job: {player.Job}");
             Console.WriteLine($"Health: {player.Health}, Attack: {player.AttackPower}, Defense: {player.Defense}");
 
+            // Apply initial buffs or debuffs if any
+            player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
+            player.ApplyStatusEffect(new Debuff(2, 2)); // Example: Debuff for 2 turns
+
             TransitionToFightScene(player);
         }
 
@@ -193,6 +197,13 @@ namespace WarOfNovus
 
             strategy.ExecuteAttack((Player)character, enemy);
             Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
+
+            // Apply and update status effects
+            character.UpdateStatusEffects();
+            enemy.UpdateStatusEffects();
+
+            Console.WriteLine($"{character.Name} status effects updated.");
+            Console.WriteLine($"{enemy.Name} status effects updated.");
         }
     }
 }
