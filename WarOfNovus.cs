@@ -6,6 +6,22 @@ namespace WarOfNovus
     {
         static void Main(string[] args)
         {
+            NPC tutorialNPC = new NPC();
+            bool tutorialCompleted = false;
+
+            while (!tutorialCompleted)
+            {
+                Console.Clear();
+                tutorialNPC.ShowNextTutorialStep();
+                Console.WriteLine("Press ENTER to continue...");
+                Console.ReadLine();
+
+                if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Enter)
+                {
+                    tutorialCompleted = true;
+                }
+            }
+
             DisplayTitle(); // Menampilkan title ASCII
 
             // Transisi ke pembuatan karakter
@@ -164,6 +180,7 @@ namespace WarOfNovus
 
         private static void TransitionToFightScene(Character character)
         {
+            NPC npc = new NPC();
             TopTitle();
             Console.WriteLine();
 
@@ -183,7 +200,6 @@ namespace WarOfNovus
             if (character is Player player && player.Job == Job.Spiritualist) // Job is now an enum
             {
                 strategy = new MagicAttack(); // Spiritualist menggunakan serangan sihir
-                Console.WriteLine($"{player.Name} adalah seorang Spiritualist, menggunakan serangan sihir!");
             }
             else
             {
@@ -193,6 +209,12 @@ namespace WarOfNovus
 
             strategy.ExecuteAttack((Player)character, enemy);
             Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
+
+            // Check if player is dead
+            if (character.Health <= 0)
+            {
+                npc.ShowDeathMessage();
+            }
         }
     }
 }
