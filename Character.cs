@@ -11,6 +11,7 @@ namespace WarOfNovus
         public int Defense { get; set; }
         public int Level { get; set; }
         public List<StatusEffect> StatusEffects { get; private set; } = new List<StatusEffect>();
+        public int OriginalHealth { get; set; }
 
         public Character(string name, int health, int attackPower, int defense, int level)
         {

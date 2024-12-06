@@ -55,7 +55,7 @@ namespace WarOfNovus
             Console.WriteLine(@" | | /| / /__ _____  / __ \/ _/ / |/ /__ _  ____ _____ ");
             Console.WriteLine(@" | |/ |/ / _ `/ __/ / /_/ / _/ /    / _ \ |/ / // (_-< ");
             Console.WriteLine(@" |__/|__/\_,_/_/    \____/_/  /_/|_/\___/___/\_,_/___/ ");
-            
+
             // Border bottom
             Console.WriteLine("========================================================");
         }
@@ -136,7 +136,7 @@ namespace WarOfNovus
 
             // Apply initial buffs or debuffs if any
             player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
-            player.ApplyStatusEffect(new Debuff(2, 2)); // Example: Debuff for 2 turns
+            player.ApplyStatusEffect(new Debuff(2, 2, 0, 0)); // Example: Debuff for 2 turns
 
             TransitionToFightScene(player);
         }
@@ -184,26 +184,116 @@ namespace WarOfNovus
 
             // Tentukan jenis attack berdasarkan Job karakter
             IAttackStrategy strategy;
-            if (character is Player player && player.Job == Job.Spiritualist) // Job is now an enum
+            Player player = null;
+            if (character is Player p && p.Job == Job.Spiritualist) // Job is now an enum
             {
                 strategy = new MagicAttack(); // Spiritualist menggunakan serangan sihir
-                Console.WriteLine($"{player.Name} adalah seorang Spiritualist, menggunakan serangan sihir!");
+                Console.WriteLine($"{p.Name} adalah seorang Spiritualist, menggunakan serangan sihir!");
+                player = p;
             }
             else
             {
                 strategy = new PhysicalAttack(); // Lainnya menggunakan serangan fisik
                 Console.WriteLine($"{character.Name} menggunakan serangan fisik!");
+                player = (Player)character;
             }
 
-            strategy.ExecuteAttack((Player)character, enemy);
-            Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
+            while (character.IsAlive() && enemy.IsAlive())
+            {
+                Console.WriteLine("Pilih tindakan: (1) Attack, (2) Use Skill, (3) Defend");
+                string? action = Console.ReadLine();
 
-            // Apply and update status effects
-            character.UpdateStatusEffects();
-            enemy.UpdateStatusEffects();
+                switch (action)
+                {
+                    case "1":
+                        strategy.ExecuteAttack((Player)character, enemy);
+                        break;
+                    case "2":
+                        UseSkill((Player)character, enemy);
+                        break;
+                    case "3":
+                        Defend((Player)character);
+                        break;
+                    default:
+                        Console.WriteLine("Pilihan tidak valid.");
+                        continue;
+                }
 
-            Console.WriteLine($"{character.Name} status effects updated.");
-            Console.WriteLine($"{enemy.Name} status effects updated.");
+                Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
+
+                // Apply and update status effects
+                character.UpdateStatusEffects();
+                enemy.UpdateStatusEffects();
+
+                Console.WriteLine($"{character.Name} status effects updated.");
+                Console.WriteLine($"{enemy.Name} status effects updated.");
+
+                // Reduce cooldowns for player's skills
+                foreach (var skill in player.Skills)
+                {
+                    skill.ReduceCooldown();
+                }
+
+                if (enemy.IsAlive())
+                {
+                    enemy.Attack(character);
+                    Console.WriteLine($"{character.Name} tersisa Health: {character.Health}");
+                }
+            }
+
+            if (character.IsAlive())
+            {
+                Console.WriteLine($"{character.Name} menang!");
+            }
+            else
+            {
+                Console.WriteLine($"{enemy.Name} menang!");
+            }
+        }
+
+        private static void UseSkill(Player player, Character enemy)
+        {
+            Console.WriteLine("Pilih skill untuk digunakan:");
+            // Assuming player has a list of skills
+            for (int i = 0; i < player.Skills.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {player.Skills[i].Name} (Cooldown: {player.Skills[i].Cooldown})");
+            }
+
+            if (int.TryParse(Console.ReadLine(), out int skillIndex) && skillIndex > 0 && skillIndex <= player.Skills.Count)
+            {
+                var skill = player.Skills[skillIndex - 1];
+                ShowOriginalStats(player, enemy);
+
+                skill.Use(player, enemy);
+
+                if (skill is BuffSkill)
+                {
+                    Console.WriteLine($"Attack Power increased from {player.OriginalAttackPower} to {player.AttackPower}");
+                    Console.WriteLine($"Defense increased from {player.OriginalDefense} to {player.Defense}");
+                }
+                else if (skill is DebuffSkill)
+                {
+                    Console.WriteLine($"Enemy Health decreased from {enemy.OriginalHealth} to {enemy.Health}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Pilihan skill tidak valid.");
+            }
+        }
+
+        private static void Defend(Player player)
+        {
+            Console.WriteLine($"{player.Name} is defending!");
+            player.IsDefending = true; // Set defending flag
+        }
+
+        private static void ShowOriginalStats(Player player, Character enemy)
+        {
+            player.OriginalAttackPower = player.AttackPower;
+            player.OriginalDefense = player.Defense;
+            enemy.OriginalHealth = enemy.Health;
         }
     }
 }

@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\Rivi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+      "projectUniqueName": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
       "projectName": "WarOfNovus",
-      "projectPath": "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\obj\\",
+      "projectPath": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+      "packagesPath": "C:\\Users\\Rivi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Rivi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
