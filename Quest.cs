@@ -5,11 +5,12 @@ public class Quest
     public List<string> Objectives { get; private set; }
     public string Reward { get; set; }
     public bool IsCompleted { get; private set; }
-    private int damageDealt;
+    public int damageDealt;
     public int enemiesDefeated;
     public int skillsUsed;
+    public int CompletionParameter;
 
-    public Quest(string title, string description, List<string> objectives, string reward)
+    public Quest(string title, string description, List<string> objectives, string reward, int completionParameter)
     {
         Title = title;
         Description = description;
@@ -19,6 +20,7 @@ public class Quest
         damageDealt = 0;
         enemiesDefeated = 0;
         skillsUsed = 0;
+        CompletionParameter = completionParameter;
     }
 
     public void CompleteObjective(string objective)
@@ -36,30 +38,59 @@ public class Quest
         }
     }
 
+    public void CompletionChecker(string objective)
+    {
+        if (Title == "Use Skills")
+        {
+            if (skillsUsed >= CompletionParameter)
+            {
+                CompleteObjective(objective);
+            }
+
+            else
+            {
+                Console.WriteLine($"Quest '{Title}' is not yet completed, reward still locked.");
+            }
+        }
+
+        else if (Title == "Deal Damage")
+        {
+            if (damageDealt >= CompletionParameter)
+            {
+                CompleteObjective(objective);
+            }
+            else
+            {
+                Console.WriteLine($"Quest '{Title}' is not yet completed, reward still locked.");
+            }
+        }
+
+        else if (Title == "Defeat Enemies")
+        {
+            if (enemiesDefeated >= CompletionParameter)
+            {
+                CompleteObjective(objective);
+            }
+
+            else
+            {
+                Console.WriteLine($"Quest '{Title}' is not yet completed, reward still locked.");
+            }
+        }
+    }
+
     public void TrackDamageDealt(int damage)
     {
         damageDealt += damage;
-        if (damageDealt >= 50 && Objectives.Contains("Deal 50 Damage"))
-        {
-            CompleteObjective("Deal 50 Damage");
-        }
     }
 
     public void TrackEnemyDefeated()
     {
         enemiesDefeated++;
-        if (enemiesDefeated >= 2 && Objectives.Contains("Kalahkan 2 Enemy"))
-        {
-            CompleteObjective("Kalahkan 2 Enemy");
-        }
     }
 
     public void TrackSkillUsed()
     {
         skillsUsed++;
-        if (skillsUsed >= 2 && Objectives.Contains("Gunakan 2 Skill"))
-        {
-            CompleteObjective("Gunakan 2 Skill");
-        }
     }
 }

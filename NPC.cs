@@ -15,9 +15,10 @@ namespace WarOfNovus
         private int currentStep = 0;
 
         public void ShowNextTutorialStep()
-        {
+        {   
+            PrintNPC();
             if (currentStep < tutorialSteps.Length)
-            {
+            {  
                 Console.WriteLine(tutorialSteps[currentStep]);
                 currentStep++;
             }
@@ -35,6 +36,23 @@ namespace WarOfNovus
         public void ShowDeathMessage()
         {
             Console.WriteLine("Trainer: Your endeavor was valiant, but alas, you have fallen. Do not give up, for every defeat is a lesson. Rise again and continue your journey!");
+        }
+    
+
+        public void PrintNPC()
+        {
+            Console.WriteLine("                                         _____");
+            Console.WriteLine("                                        )\\ __\\     _____");
+            Console.WriteLine("                                       / /  .´    /  _  \\");
+            Console.WriteLine("                                      / /  /     | () ]  |");
+            Console.WriteLine("             Arithmus                / /,-/    .-|¯     .---.");
+            Console.WriteLine("         [Master Trainer]           | /  \\\\_  /  /¯¯¯¯¯/ / `\\\\");
+            Console.WriteLine("                                     '--´|`,) \\ (      \\ ` ,'/");
+            Console.WriteLine("                                         \\ \\\\.´`-\\  `   `---´");
+            Console.WriteLine("                                          \\ \\\\  / )'|`  /  |");
+            Console.WriteLine("                                           \\ \\\\´  |_ _ |  /");
+            Console.WriteLine("                                            \\/\\\\ [___ .' /");
+            Console.WriteLine("                                             \\\\/  .´ .´\"");
         }
     }
 }

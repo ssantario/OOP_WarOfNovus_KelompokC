@@ -79,28 +79,28 @@ namespace WarOfNovus
         {
             if (CurrentQuest != null)
             {
-                CurrentQuest.CompleteObjective(objective);
+                CurrentQuest.CompletionChecker(objective);
             }
         }
-
-        public void DisplayCurrentQuest()
-        {
-            if (CurrentQuest != null)
-            {
-                Console.WriteLine($"Current Quest: {CurrentQuest.Title}");
-                Console.WriteLine($"Description: {CurrentQuest.Description}");
-                Console.WriteLine("Objectives:");
-                foreach (var objective in CurrentQuest.Objectives)
-                {
-                    Console.WriteLine($"- {objective}");
-                }
-                Console.WriteLine($"Reward: {CurrentQuest.Reward}");
-            }
-            else
-            {
-                Console.WriteLine("No current quest.");
-            }
-        }
+//
+        //public void DisplayCurrentQuest()
+        //{
+        //    if (CurrentQuest != null)
+        //    {
+        //        Console.WriteLine($"Current Quest: {CurrentQuest.Title}");
+        //        Console.WriteLine($"Description: {CurrentQuest.Description}");
+        //        Console.WriteLine("Objectives:");
+        //        foreach (var objective in CurrentQuest.Objectives)
+        //        {
+        //            Console.WriteLine($"- {objective}");
+        //        }
+        //        Console.WriteLine($"Reward: {CurrentQuest.Reward}");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("No current quest.");
+        //    }
+        //}
 
         public override void Attack(Character target)
         {

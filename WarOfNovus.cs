@@ -147,17 +147,25 @@ namespace WarOfNovus
                 return;
             }
 
+            TopTitle();
+            Console.WriteLine();
+
             var player = new Player(name, nation, job); // Pass enum for Job
             Console.WriteLine($"Player dibuat: {player.Name}, Nation: {player.Nation}, Job: {player.Job}");
             Console.WriteLine($"Health: {player.Health}, Attack: {player.AttackPower}, Defense: {player.Defense}");
-
+            
             // Assign a quest to the player
-            var quest = new Quest("Use Skills", "Use 2 skills during the fight", new List<string> { "Gunakan 2 Skill" }, "Reward: 25hp");
+            var quest = new Quest("Use Skills", "Use 2 skills during the fight", new List<string> { "Gunakan 2 Skill" }, "Reward: HONOR FROM THE KING!", 2);
             player.AssignQuest(quest);
 
             // Apply initial buffs or debuffs if any
             player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
             player.ApplyStatusEffect(new Debuff(2, 2, 0, 0)); // Example: Debuff for 2 turns
+            
+            Console.WriteLine();
+            Console.WriteLine("Tekan ENTER untuk melanjutkan ke Fighting Scene...");
+            Console.ReadLine();
+
 
             TransitionToFightScene(player);
         }
@@ -189,13 +197,6 @@ namespace WarOfNovus
 
         private static void TransitionToFightScene(Character character)
         {
-            TopTitle();
-            Console.WriteLine();
-
-            Console.WriteLine("Tekan ENTER untuk melanjutkan ke Fighting Scene...");
-            Console.ReadLine();
-            Console.Clear();
-
             // Fighting Scene
             TopTitle();
             Console.WriteLine();
@@ -221,6 +222,9 @@ namespace WarOfNovus
 
             while (character.IsAlive() && enemy.IsAlive())
             {
+                TopTitle();
+                Console.WriteLine();
+
                 // Display quest information
                 if (player?.CurrentQuest != null)
                 {
@@ -234,6 +238,7 @@ namespace WarOfNovus
 
                 Console.WriteLine("Pilih tindakan: (1) Attack, (2) Use Skill, (3) Defend");
                 string? action = Console.ReadLine();
+                Console.WriteLine();
 
                 switch (action)
                 {
@@ -271,6 +276,10 @@ namespace WarOfNovus
                     enemy.Attack(character);
                     Console.WriteLine($"{character.Name} tersisa Health: {character.Health}");
                 }
+                
+                Console.WriteLine();
+                Console.WriteLine("Tekan ENTER untuk continue bertarung...");
+                Console.ReadLine();
             }
 
             if (character.IsAlive())
@@ -281,6 +290,8 @@ namespace WarOfNovus
             {
                 Console.WriteLine($"{enemy.Name} menang!");
             }
+            
+            player.CompleteQuestObjective("Gunakan 2 Skill");
         }
 
         private static void UseSkill(Player player, Character enemy)

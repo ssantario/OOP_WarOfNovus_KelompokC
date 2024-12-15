@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/aryautomo/Documents/3rd Term/OOP/Novus/OOP_WarOfNovus_KelompokC/WarOfNovus.csproj": {}
+    "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj": {}
   },
   "projects": {
-    "/Users/aryautomo/Documents/3rd Term/OOP/Novus/OOP_WarOfNovus_KelompokC/WarOfNovus.csproj": {
+    "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aryautomo/Documents/3rd Term/OOP/Novus/OOP_WarOfNovus_KelompokC/WarOfNovus.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
         "projectName": "WarOfNovus",
-        "projectPath": "/Users/aryautomo/Documents/3rd Term/OOP/Novus/OOP_WarOfNovus_KelompokC/WarOfNovus.csproj",
-        "packagesPath": "/Users/aryautomo/.nuget/packages/",
-        "outputPath": "/Users/aryautomo/Documents/3rd Term/OOP/Novus/OOP_WarOfNovus_KelompokC/obj/",
+        "projectPath": "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\Documents\\Object Oriented Programming (ENCE603010)\\OOP_WarOfNovus_KelompokC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/aryautomo/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -54,26 +53,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.11, 8.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-arm64",
-              "version": "[8.0.11, 8.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.11, 8.0.11]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
