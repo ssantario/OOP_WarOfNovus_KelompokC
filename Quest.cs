@@ -6,6 +6,8 @@ public class Quest
     public string Reward { get; set; }
     public bool IsCompleted { get; private set; }
     private int damageDealt;
+    public int enemiesDefeated;
+    public int skillsUsed;
 
     public Quest(string title, string description, List<string> objectives, string reward)
     {
@@ -15,6 +17,8 @@ public class Quest
         Reward = reward;
         IsCompleted = false;
         damageDealt = 0;
+        enemiesDefeated = 0;
+        skillsUsed = 0;
     }
 
     public void CompleteObjective(string objective)
@@ -38,6 +42,24 @@ public class Quest
         if (damageDealt >= 50 && Objectives.Contains("Deal 50 Damage"))
         {
             CompleteObjective("Deal 50 Damage");
+        }
+    }
+
+    public void TrackEnemyDefeated()
+    {
+        enemiesDefeated++;
+        if (enemiesDefeated >= 2 && Objectives.Contains("Kalahkan 2 Enemy"))
+        {
+            CompleteObjective("Kalahkan 2 Enemy");
+        }
+    }
+
+    public void TrackSkillUsed()
+    {
+        skillsUsed++;
+        if (skillsUsed >= 2 && Objectives.Contains("Gunakan 2 Skill"))
+        {
+            CompleteObjective("Gunakan 2 Skill");
         }
     }
 }

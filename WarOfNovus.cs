@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WarOfNovus
 {
@@ -150,6 +151,10 @@ namespace WarOfNovus
             Console.WriteLine($"Player dibuat: {player.Name}, Nation: {player.Nation}, Job: {player.Job}");
             Console.WriteLine($"Health: {player.Health}, Attack: {player.AttackPower}, Defense: {player.Defense}");
 
+            // Assign a quest to the player
+            var quest = new Quest("Use Skills", "Use 2 skills during the fight", new List<string> { "Gunakan 2 Skill" }, "Reward: 25hp");
+            player.AssignQuest(quest);
+
             // Apply initial buffs or debuffs if any
             player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
             player.ApplyStatusEffect(new Debuff(2, 2, 0, 0)); // Example: Debuff for 2 turns
@@ -216,6 +221,17 @@ namespace WarOfNovus
 
             while (character.IsAlive() && enemy.IsAlive())
             {
+                // Display quest information
+                if (player?.CurrentQuest != null)
+                {
+                    Console.WriteLine($"Quest: {player.CurrentQuest.Title}");
+                    Console.WriteLine($"Description: {player.CurrentQuest.Description}");
+                    Console.WriteLine($"Objectives: {string.Join(", ", player.CurrentQuest.Objectives)}");
+                    Console.WriteLine($"Reward: {player.CurrentQuest.Reward}");
+                    Console.WriteLine($"Skills Used: {player.CurrentQuest.skillsUsed}");
+                    Console.WriteLine();
+                }
+
                 Console.WriteLine("Pilih tindakan: (1) Attack, (2) Use Skill, (3) Defend");
                 string? action = Console.ReadLine();
 
@@ -282,6 +298,12 @@ namespace WarOfNovus
                 ShowOriginalStats(player, enemy);
 
                 skill.Use(player, enemy);
+
+                // Track skill usage for quest objectives
+                if (player.CurrentQuest != null)
+                {
+                    player.CurrentQuest.TrackSkillUsed();
+                }
 
                 if (skill is BuffSkill)
                 {
