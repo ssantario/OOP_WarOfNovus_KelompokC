@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O/MrBNjF0vA=",
+  "dgSpecHash": "BFct2s2gKGQ=",
   "success": true,
-  "projectFilePath": "/Users/aryautomo/Documents/3rd Term/OOP/Novus/OOP_WarOfNovus_KelompokC/WarOfNovus.csproj",
-  "expectedPackageFiles": [
-    "/Users/aryautomo/.nuget/packages/microsoft.netcore.app.ref/8.0.11/microsoft.netcore.app.ref.8.0.11.nupkg.sha512",
-    "/Users/aryautomo/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.11/microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512",
-    "/Users/aryautomo/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.11/microsoft.netcore.app.host.osx-arm64.8.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Rivi\\Downloads\\asdasd\\OOP_WarOfNovus_KelompokC\\WarOfNovus.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

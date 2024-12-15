@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace WarOfNovus
 {
@@ -7,6 +6,8 @@ namespace WarOfNovus
     {
         static void Main(string[] args)
         {
+            DisplayTitle(); // Menampilkan title ASCII
+
             NPC tutorialNPC = new NPC();
             bool tutorialCompleted = false;
 
@@ -22,8 +23,6 @@ namespace WarOfNovus
                     tutorialCompleted = true;
                 }
             }
-
-            DisplayTitle(); // Menampilkan title ASCII
 
             // Transisi ke pembuatan karakter
             TopTitle();
@@ -62,6 +61,7 @@ namespace WarOfNovus
             Console.ReadLine();
             Console.Clear();
         }
+
 
         static void TopTitle()
         {
@@ -150,15 +150,9 @@ namespace WarOfNovus
             Console.WriteLine($"Player dibuat: {player.Name}, Nation: {player.Nation}, Job: {player.Job}");
             Console.WriteLine($"Health: {player.Health}, Attack: {player.AttackPower}, Defense: {player.Defense}");
 
-            // Assign a quest to the player
-            var quest = new Quest("First Steps", "Complete the tutorial, defeat your first enemy, and deal 50 damage.", new List<string> { "Complete Tutorial", "Defeat First Enemy", "Deal 50 Damage" }, "100 Gold");
-            player.AssignQuest(quest);
-
-            // Display current quest
-            player.DisplayCurrentQuest();
-
             // Apply initial buffs or debuffs if any
             player.ApplyStatusEffect(new Buff(3, 5, 0)); // Example: Buff for 3 turns
+            player.ApplyStatusEffect(new Debuff(2, 2, 0, 0)); // Example: Debuff for 2 turns
 
             TransitionToFightScene(player);
         }
@@ -190,7 +184,6 @@ namespace WarOfNovus
 
         private static void TransitionToFightScene(Character character)
         {
-            NPC npc = new NPC();
             TopTitle();
             Console.WriteLine();
 
@@ -218,19 +211,105 @@ namespace WarOfNovus
             {
                 strategy = new PhysicalAttack(); // Lainnya menggunakan serangan fisik
                 Console.WriteLine($"{character.Name} menggunakan serangan fisik!");
+                player = (Player)character;
             }
 
-            strategy.ExecuteAttack((Player)character, enemy);
-            Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
-
-            // Display current quest during the fight scene
-            if (player != null)
+            while (character.IsAlive() && enemy.IsAlive())
             {
-                player.DisplayCurrentQuest();
-                // Complete quest objectives
-                player.CompleteQuestObjective("Complete Tutorial");
-                player.CompleteQuestObjective("Defeat First Enemy");
+                Console.WriteLine("Pilih tindakan: (1) Attack, (2) Use Skill, (3) Defend");
+                string? action = Console.ReadLine();
+
+                switch (action)
+                {
+                    case "1":
+                        strategy.ExecuteAttack((Player)character, enemy);
+                        break;
+                    case "2":
+                        UseSkill((Player)character, enemy);
+                        break;
+                    case "3":
+                        Defend((Player)character);
+                        break;
+                    default:
+                        Console.WriteLine("Pilihan tidak valid.");
+                        continue;
+                }
+
+                Console.WriteLine($"{enemy.Name} tersisa Health: {enemy.Health}");
+
+                // Apply and update status effects
+                character.UpdateStatusEffects();
+                enemy.UpdateStatusEffects();
+
+                Console.WriteLine($"{character.Name} status effects updated.");
+                Console.WriteLine($"{enemy.Name} status effects updated.");
+
+                // Reduce cooldowns for player's skills
+                foreach (var skill in player.Skills)
+                {
+                    skill.ReduceCooldown();
+                }
+
+                if (enemy.IsAlive())
+                {
+                    enemy.Attack(character);
+                    Console.WriteLine($"{character.Name} tersisa Health: {character.Health}");
+                }
             }
+
+            if (character.IsAlive())
+            {
+                Console.WriteLine($"{character.Name} menang!");
+            }
+            else
+            {
+                Console.WriteLine($"{enemy.Name} menang!");
+            }
+        }
+
+        private static void UseSkill(Player player, Character enemy)
+        {
+            Console.WriteLine("Pilih skill untuk digunakan:");
+            // Assuming player has a list of skills
+            for (int i = 0; i < player.Skills.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {player.Skills[i].Name} (Cooldown: {player.Skills[i].Cooldown})");
+            }
+
+            if (int.TryParse(Console.ReadLine(), out int skillIndex) && skillIndex > 0 && skillIndex <= player.Skills.Count)
+            {
+                var skill = player.Skills[skillIndex - 1];
+                ShowOriginalStats(player, enemy);
+
+                skill.Use(player, enemy);
+
+                if (skill is BuffSkill)
+                {
+                    Console.WriteLine($"Attack Power increased from {player.OriginalAttackPower} to {player.AttackPower}");
+                    Console.WriteLine($"Defense increased from {player.OriginalDefense} to {player.Defense}");
+                }
+                else if (skill is DebuffSkill)
+                {
+                    Console.WriteLine($"Enemy Health decreased from {enemy.OriginalHealth} to {enemy.Health}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Pilihan skill tidak valid.");
+            }
+        }
+
+        private static void Defend(Player player)
+        {
+            Console.WriteLine($"{player.Name} is defending!");
+            player.IsDefending = true; // Set defending flag
+        }
+
+        private static void ShowOriginalStats(Player player, Character enemy)
+        {
+            player.OriginalAttackPower = player.AttackPower;
+            player.OriginalDefense = player.Defense;
+            enemy.OriginalHealth = enemy.Health;
         }
     }
 }
